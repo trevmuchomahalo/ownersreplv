@@ -1029,6 +1029,44 @@
     nav .nav-links { display: none; }
     .nav-cta { margin-left: 0; }
   }
+
+  /* ── FAQ Accordion ─────────────────────────────────────── */
+  .faq-item {
+    border-bottom: 1px solid rgba(74,63,53,0.1);
+    padding: 0;
+  }
+  .faq-item:first-child { border-top: 1px solid rgba(74,63,53,0.1); }
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 4px;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    cursor: pointer;
+    list-style: none;
+    gap: 16px;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q::after {
+    content: '+';
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--red);
+    flex-shrink: 0;
+    line-height: 1;
+    transition: transform 0.2s;
+  }
+  details[open] .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    padding: 0 4px 22px;
+    color: var(--charcoal-mid, #6B6B6B);
+    line-height: 1.75;
+  }
+  .faq-a p { margin: 0; }
+  .faq-a a { color: var(--red); text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -1173,7 +1211,7 @@
   <div class="container">
     <div class="section-header">
       <span class="eyebrow">Our Services</span>
-      <h2 class="section-heading display">Services we offer to <em>protect your home.</em></h2>
+      <h2 class="section-heading display">Las Vegas contractor oversight &amp; <em>renovation protection services.</em></h2>
       <p class="section-sub">Choose the level of representation that fits your project — or start with Tier 1 and build from there.</p>
     </div>
 
@@ -1403,6 +1441,61 @@
   </div>
 </section>
 
+<section id="faq" class="section-pad" style="background:var(--warm-white,#FDFCF9);">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Common Questions</span>
+      <h2 class="section-heading display">Everything homeowners ask <em>before they hire us.</em></h2>
+    </div>
+
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:0;">
+
+      <details class="faq-item" open>
+        <summary class="faq-q">Who manages the contractor during a home renovation in Las Vegas?</summary>
+        <div class="faq-a">
+          <p>Most Las Vegas homeowners discover too late that no one is watching the contractor on their behalf. Your general contractor works for themselves — not for you. Owner's Rep LV fills that gap: we act as your designated representative on-site, reviewing work quality, holding contractors to the agreed scope, and making sure your money is spent the way it was planned. Think of us as the project manager who answers only to you.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">What does an Owner's Rep do during a renovation?</summary>
+        <div class="faq-a">
+          <p>An Owner's Representative manages the contractor relationship so you don't have to. That includes vetting bids, reviewing contracts for language that protects the homeowner, conducting site visits to verify work matches specs, flagging change orders before they become costly surprises, and giving you a clear picture of where the project stands — in plain English, not contractor speak. We serve as your eyes, ears, and advocate from bid day through final walkthrough.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">How do I protect myself from a bad contractor in Las Vegas?</summary>
+        <div class="faq-a">
+          <p>Nevada law requires all contractors to be licensed through the <a href="https://www.nvcontractorsboard.com/resources/working-with-contractors/" target="_blank" rel="noopener">Nevada State Contractors Board</a> — always verify before signing anything. Beyond licensing: get at least three written bids, never pay more than 10% or $1,000 upfront, require a detailed scope of work in the contract, and demand lien releases with every payment. The single most effective step is having an independent professional review your contract and oversee the work — which is exactly what we do.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">How much does contractor oversight cost in Las Vegas?</summary>
+        <div class="faq-a">
+          <p>Our services start at $197 for The Bid Report — a complete bid analysis, contractor vetting, and a Site and Service Performance Agreement you own. Full project oversight (Designated Owner's Rep) is scoped per project based on size and duration. Most clients find that oversight pays for itself on bid day alone: one client saved $14,000 on her kitchen and bath renovation because we sourced two additional competitive bids. We offer a free 20-minute consult so you can decide if it makes sense for your project before committing.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Do you serve Henderson, Summerlin, North Las Vegas, and other valley cities?</summary>
+        <div class="faq-a">
+          <p>Yes — we cover the entire Las Vegas Valley, including Henderson, Summerlin, North Las Vegas, Paradise, Enterprise, Spring Valley, Green Valley, Boulder City, Anthem, Whitney Ranch, and Mountains Edge. If your home is in Clark County, we can help.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">What is The Bid Report and do I need it?</summary>
+        <div class="faq-a">
+          <p>The Bid Report is our entry-level service for homeowners who already have contractor bids but aren't sure if they're being quoted fairly. For $197, we analyze your bids side-by-side, flag scope gaps and ambiguous language, vet your top contractor's license and complaint history with the Nevada Contractors Board, and provide you with a Site and Service Performance Agreement — a contract template that protects your payment schedule, quality standards, and dispute rights. If you're about to sign a contract with a contractor, The Bid Report is worth doing first.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
 <section id="reviews" class="section-pad">
   <div class="container">
     <div class="section-header">
@@ -1546,6 +1639,64 @@
 </footer>
 
 
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Who manages the contractor during a home renovation in Las Vegas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most Las Vegas homeowners discover too late that no one is watching the contractor on their behalf. Your general contractor works for themselves — not for you. Owner's Rep LV fills that gap: we act as your designated representative on-site, reviewing work quality, holding contractors to the agreed scope, and making sure your money is spent the way it was planned."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does an Owner's Rep do during a renovation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An Owner's Representative manages the contractor relationship so you don't have to. That includes vetting bids, reviewing contracts, conducting site visits to verify work matches specs, flagging change orders before they become costly surprises, and giving you a clear picture of where the project stands — from bid day through final walkthrough."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I protect myself from a bad contractor in Las Vegas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nevada law requires all contractors to be licensed through the Nevada State Contractors Board — always verify before signing. Get at least three written bids, never pay more than 10% or $1,000 upfront, require a detailed scope of work in the contract, and demand lien releases with every payment. Having an independent professional review your contract and oversee the work is the single most effective protection."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does contractor oversight cost in Las Vegas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Services start at $197 for The Bid Report — a complete bid analysis, contractor vetting, and a Site and Service Performance Agreement. Full project oversight is scoped per project. Most clients find oversight pays for itself on bid day alone. We offer a free 20-minute consult so you can decide if it makes sense before committing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you serve Henderson, Summerlin, North Las Vegas, and other valley cities?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — we cover the entire Las Vegas Valley, including Henderson, Summerlin, North Las Vegas, Paradise, Enterprise, Spring Valley, Green Valley, Boulder City, Anthem, Whitney Ranch, and Mountains Edge. If your home is in Clark County, we can help."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is The Bid Report and do I need it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Bid Report is our $197 entry-level service. We analyze your contractor bids side-by-side, flag scope gaps and ambiguous language, vet your top contractor's license and complaint history with the Nevada Contractors Board, and provide a Site and Service Performance Agreement that protects your payment schedule, quality standards, and dispute rights. If you're about to sign a contract with a contractor, The Bid Report is worth doing first."
+      }
+    }
+  ]
+}
+</script>
 
 </body></html>
 Claude is active in this tab group
