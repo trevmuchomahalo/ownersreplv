@@ -1032,7 +1032,7 @@
   ═══════════════════════════════════════════════════════ */
   @media (max-width: 900px) {
     .hero-inner { grid-template-columns: 1fr; gap: 24px; }
-    .hero-visual { order: -1; }
+    .hero-visual { order: 2; }
     .hero-visual img { max-width: 196px; margin: 0 auto; }
     .story-grid  { gap: 20px; }
     .offers-grid { grid-template-columns: 1fr; }
@@ -1044,7 +1044,7 @@
     .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
     .footer-links { flex-wrap: wrap; justify-content: center; }
     nav .nav-links { display: none; }
-    .nav-cta { margin-left: 0; }
+    .nav-cta { display: none; }
   }
 
   /* ── FAQ Accordion ─────────────────────────────────────── */
@@ -1084,7 +1084,99 @@
   }
   .faq-a p { margin: 0; }
   .faq-a a { color: var(--red); text-decoration: underline; }
-</style>
+
+  /* ── Hamburger Button ─────────────────────────────────── */
+  .hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1001;
+  }
+  .hamburger-btn span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+
+  /* ── Mobile Menu Overlay ──────────────────────────────── */
+  .mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 999;
+  }
+  .mobile-overlay.open { display: block; }
+
+  /* ── Mobile Menu Drawer ───────────────────────────────── */
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; right: -100%;
+    width: 76%; max-width: 300px;
+    height: 100vh;
+    background: #1e1714;
+    z-index: 1000;
+    padding: 28px 28px 40px;
+    transition: right 0.3s ease;
+    gap: 0;
+  }
+  .mobile-menu.open { right: 0; }
+  .mobile-menu-close {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 1.6rem;
+    cursor: pointer;
+    line-height: 1;
+    margin-bottom: 32px;
+  }
+  .mobile-menu-close:hover { color: #fff; }
+  .mobile-menu nav a {
+    display: block;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: color 0.2s;
+  }
+  .mobile-menu nav a:last-of-type { border-bottom: none; }
+  .mobile-menu nav a:hover { color: #fff; }
+  .mobile-menu .mobile-menu-cta {
+    display: block;
+    margin-top: 32px;
+    padding: 14px;
+    background: var(--red);
+    color: #fff;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .mobile-menu .mobile-menu-cta:hover { background: var(--red-dark); }
+
+  @media (max-width: 900px) {
+    .hamburger-btn { display: flex; }
+  }
+  </style>
 </head>
 <body>
 
@@ -1097,7 +1189,10 @@
       <div class="nav-stamp-mini">OR</div>
       Owner's <em>Rep.</em>
     </a>
-    <ul class="nav-links">
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
       <li><a href="#story">Our Story</a></li>
       <li><a href="#offers">Services</a></li>
       <li><a href="#reviews">Reviews</a></li>
@@ -1105,6 +1200,17 @@
     <a href="#cta" class="btn btn-red nav-cta">Start Your Project</a>
   </div>
 </nav>
+  <!-- Mobile Menu -->
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">&times;</button>
+    <nav>
+      <a href="#story">Our Story</a>
+      <a href="#offers">Services</a>
+      <a href="#reviews">Reviews</a>
+    </nav>
+    <a href="#cta" class="mobile-menu-cta">Start Your Project</a>
+  </div>
 
 
 <!-- ════════════════════════════════════════
@@ -1689,4 +1795,19 @@
 }
 </script>
 
+
+  <script>
+    (function() {
+      const btn = document.getElementById('hamburger-btn');
+      const menu = document.getElementById('mobile-menu');
+      const overlay = document.getElementById('mobile-overlay');
+      const closeBtn = document.getElementById('mobile-menu-close');
+      function open() { menu.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow='hidden'; menu.setAttribute('aria-hidden','false'); }
+      function close() { menu.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow=''; menu.setAttribute('aria-hidden','true'); }
+      btn.addEventListener('click', open);
+      closeBtn.addEventListener('click', close);
+      overlay.addEventListener('click', close);
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    })();
+  </script>
 </body></html>
